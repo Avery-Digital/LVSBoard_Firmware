@@ -1,0 +1,16 @@
+../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_bus.h:1384:22:LL_AHB4_GRP1_EnableClock	24	static
+../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_gpio.h:774:26:LL_GPIO_ReadInputPort	16	static
+../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_gpio.h:803:26:LL_GPIO_IsInputPinSet	16	static
+../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_gpio.h:815:22:LL_GPIO_WriteOutputPort	16	static
+../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_gpio.h:826:26:LL_GPIO_ReadOutputPort	16	static
+../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_gpio.h:855:26:LL_GPIO_IsOutputPinSet	16	static
+../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_gpio.h:884:22:LL_GPIO_SetOutputPin	16	static
+../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_gpio.h:913:22:LL_GPIO_ResetOutputPin	16	static
+../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_gpio.h:942:22:LL_GPIO_TogglePin	24	static
+../Core/Src/GPIODriver.c:14:13:GPIOInit	40	static
+../Core/Src/GPIODriver.c:31:13:GPIOReset	16	static
+../Core/Src/GPIODriver.c:37:13:GPIOSet	16	static
+../Core/Src/GPIODriver.c:43:13:GPIOToggle	16	static
+../Core/Src/GPIODriver.c:49:9:GPIORead	24	static
+../Core/Src/GPIODriver.c:64:13:GPIOReadPort	24	static
+../Core/Src/GPIODriver.c:81:13:GPIOWritePort	24	static

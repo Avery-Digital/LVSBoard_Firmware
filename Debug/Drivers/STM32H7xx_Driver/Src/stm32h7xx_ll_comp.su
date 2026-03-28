@@ -1,0 +1,4 @@
+../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_comp.h:781:26:LL_COMP_IsLocked	16	static
+../Drivers/STM32H7xx_Driver/Src/stm32h7xx_ll_comp.c:149:13:LL_COMP_DeInit	24	static
+../Drivers/STM32H7xx_Driver/Src/stm32h7xx_ll_comp.c:186:13:LL_COMP_Init	24	static
+../Drivers/STM32H7xx_Driver/Src/stm32h7xx_ll_comp.c:264:6:LL_COMP_StructInit	16	static

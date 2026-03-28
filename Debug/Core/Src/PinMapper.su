@@ -1,0 +1,5 @@
+../Core/Src/PinMapper.c:20:9:PinColMAP	16	static
+../Core/Src/PinMapper.c:26:9:PinRowMAP	16	static
+../Core/Src/PinMapper.c:37:9:PinBankMAP	16	static
+../Core/Src/PinMapper.c:44:9:PinBlockMAP	16	static
+../Core/Src/PinMapper.c:50:9:PinPositionMAP	24	static

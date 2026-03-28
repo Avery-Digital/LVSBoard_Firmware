@@ -1,0 +1,16 @@
+../Core/Src/MODBUSInterface.c:26:23:MBBYTE2HEX	3
+../Core/Src/MODBUSInterface.c:35:20:HEX2MBBYTE	3
+../Core/Src/MODBUSInterface.c:46:24:UINT8to16	1
+../Core/Src/MODBUSInterface.c:63:27:MBBYTEisHEX	4
+../Core/Src/MODBUSInterface.c:81:13:MODBUSInterfacePacketLRCCalc	2
+../Core/Src/MODBUSInterface.c:102:13:MODBUSAnswerGen	3
+../Core/Src/MODBUSInterface.c:136:13:MODBUSInterfacePacketAddrCheck	2
+../Core/Src/MODBUSInterface.c:150:13:MODBUSInterfacePacketLRCCheck	2
+../Core/Src/MODBUSInterface.c:162:13:MODBUSInterfacePacketSizeCheck	3
+../Core/Src/MODBUSInterface.c:175:13:MODBUSInterfacePacketHexCheck	3
+../Core/Src/MODBUSInterface.c:187:13:MODBUSInterfacePacketParser	3
+../Core/Src/MODBUSInterface.c:216:13:MODBUSInterfaceReport	1
+../Core/Src/MODBUSInterface.c:230:13:MODBUSInterfaceErrorReport	1
+../Core/Src/MODBUSInterface.c:253:13:MBVoltageSwitcher	24
+../Core/Src/MODBUSInterface.c:389:13:MODBUSInterCommandDispatcher	13
+../Core/Src/MODBUSInterface.c:437:13:MODBUSInterfaceHandler	8

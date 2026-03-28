@@ -1,0 +1,16 @@
+../Core/Src/MODBUSInterface.c:26:23:MBBYTE2HEX	24	static
+../Core/Src/MODBUSInterface.c:35:20:HEX2MBBYTE	24	static
+../Core/Src/MODBUSInterface.c:46:24:UINT8to16	24	static
+../Core/Src/MODBUSInterface.c:63:27:MBBYTEisHEX	24	static
+../Core/Src/MODBUSInterface.c:81:13:MODBUSInterfacePacketLRCCalc	24	static
+../Core/Src/MODBUSInterface.c:102:13:MODBUSAnswerGen	16	static
+../Core/Src/MODBUSInterface.c:136:13:MODBUSInterfacePacketAddrCheck	16	static
+../Core/Src/MODBUSInterface.c:150:13:MODBUSInterfacePacketLRCCheck	16	static
+../Core/Src/MODBUSInterface.c:162:13:MODBUSInterfacePacketSizeCheck	16	static
+../Core/Src/MODBUSInterface.c:175:13:MODBUSInterfacePacketHexCheck	16	static
+../Core/Src/MODBUSInterface.c:187:13:MODBUSInterfacePacketParser	16	static
+../Core/Src/MODBUSInterface.c:216:13:MODBUSInterfaceReport	16	static
+../Core/Src/MODBUSInterface.c:230:13:MODBUSInterfaceErrorReport	24	static
+../Core/Src/MODBUSInterface.c:253:13:MBVoltageSwitcher	24	static
+../Core/Src/MODBUSInterface.c:389:13:MODBUSInterCommandDispatcher	16	static
+../Core/Src/MODBUSInterface.c:437:13:MODBUSInterfaceHandler	16	static

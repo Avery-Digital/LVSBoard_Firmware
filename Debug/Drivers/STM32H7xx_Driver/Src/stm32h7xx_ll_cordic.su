@@ -1,0 +1,3 @@
+../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_bus.h:1230:22:LL_AHB2_GRP1_ForceReset	16	static
+../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_bus.h:1260:22:LL_AHB2_GRP1_ReleaseReset	16	static
+../Drivers/STM32H7xx_Driver/Src/stm32h7xx_ll_cordic.c:61:13:LL_CORDIC_DeInit	24	static

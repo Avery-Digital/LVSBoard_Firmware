@@ -1,0 +1,5 @@
+../Core/Src/PinMapper.c:20:9:PinColMAP	1
+../Core/Src/PinMapper.c:26:9:PinRowMAP	1
+../Core/Src/PinMapper.c:37:9:PinBankMAP	1
+../Core/Src/PinMapper.c:44:9:PinBlockMAP	1
+../Core/Src/PinMapper.c:50:9:PinPositionMAP	2

@@ -1,0 +1,5 @@
+../Core/Src/UserInterface.c:25:13:UserInterfaceBIST	16	static
+../Core/Src/UserInterface.c:60:13:ResetUserInterface	4	static
+../Core/Src/UserInterface.c:67:13:VoltageSwitcherInterface	24	static
+../Core/Src/UserInterface.c:234:13:UserInterfaceCommandDispatcher	8	static
+../Core/Src/UserInterface.c:276:13:UserInterfaceHandler	16	static

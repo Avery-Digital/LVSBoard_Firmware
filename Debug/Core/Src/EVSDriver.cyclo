@@ -1,0 +1,15 @@
+../Core/Src/EVSDriver.c:36:13:EVSIndicatorLedControl	5
+../Core/Src/EVSDriver.c:62:13:EVSDisAllnCS	1
+../Core/Src/EVSDriver.c:74:13:EVSEnAllnCS	1
+../Core/Src/EVSDriver.c:86:13:EVSBlockProgram	7
+../Core/Src/EVSDriver.c:139:13:EVSSetSinglePinInBuffer	9
+../Core/Src/EVSDriver.c:201:13:EVSGetSinglePinFromBuffer	6
+../Core/Src/EVSDriver.c:229:13:EVSInit	1
+../Core/Src/EVSDriver.c:260:13:EVSReset	4
+../Core/Src/EVSDriver.c:295:13:EVSCheck	9
+../Core/Src/EVSDriver.c:338:13:EVSSetSinglePin	6
+../Core/Src/EVSDriver.c:382:13:EVSGetSinglePin	2
+../Core/Src/EVSDriver.c:399:13:EVSSetAllPins	6
+../Core/Src/EVSDriver.c:430:13:EVSGetAllPins	2
+../Core/Src/EVSDriver.c:441:13:EVSSetAllPinsSameSource	6
+../Core/Src/EVSDriver.c:470:13:EVSReportSourceConnection	3

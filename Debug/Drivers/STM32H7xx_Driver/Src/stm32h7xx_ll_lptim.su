@@ -1,0 +1,17 @@
+../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_lptim.h:392:26:LL_LPTIM_IsEnabled	16	static
+../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_lptim.h:1167:22:LL_LPTIM_ClearFlag_CMPOK	16	static
+../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_lptim.h:1179:26:LL_LPTIM_IsActiveFlag_CMPOK	16	static
+../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_lptim.h:1190:22:LL_LPTIM_ClearFlag_ARROK	16	static
+../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_lptim.h:1202:26:LL_LPTIM_IsActiveFlag_ARROK	16	static
+../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_bus.h:2056:22:LL_APB1_GRP1_ForceReset	16	static
+../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_bus.h:2118:22:LL_APB1_GRP1_ReleaseReset	16	static
+../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_bus.h:2942:22:LL_APB4_GRP1_ForceReset	16	static
+../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_bus.h:2982:22:LL_APB4_GRP1_ReleaseReset	16	static
+../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_rcc.h:2895:22:LL_RCC_SetClockSource	24	static
+../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_rcc.h:2996:22:LL_RCC_SetLPTIMClockSource	16	static
+../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_rcc.h:3466:26:LL_RCC_GetClockSource	24	static
+../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_rcc.h:3577:26:LL_RCC_GetLPTIMClockSource	16	static
+../Drivers/STM32H7xx_Driver/Src/stm32h7xx_ll_lptim.c:95:13:LL_LPTIM_DeInit	24	static
+../Drivers/STM32H7xx_Driver/Src/stm32h7xx_ll_lptim.c:147:6:LL_LPTIM_StructInit	16	static
+../Drivers/STM32H7xx_Driver/Src/stm32h7xx_ll_lptim.c:166:13:LL_LPTIM_Init	24	static
+../Drivers/STM32H7xx_Driver/Src/stm32h7xx_ll_lptim.c:209:6:LL_LPTIM_Disable	88	static,ignoring_inline_asm

@@ -1,0 +1,4 @@
+../Core/Src/StatusManager.c:14:13:StatusManager_Init	1
+../Core/Src/StatusManager.c:23:13:StatusManager_Reset	1
+../Core/Src/StatusManager.c:32:13:StatusManager_VSB0_Led	2
+../Core/Src/StatusManager.c:43:13:StatusManager_VSB1_Led	2

@@ -1,0 +1,5 @@
+../Core/Src/UserInterface.c:25:13:UserInterfaceBIST	3
+../Core/Src/UserInterface.c:60:13:ResetUserInterface	1
+../Core/Src/UserInterface.c:67:13:VoltageSwitcherInterface	31
+../Core/Src/UserInterface.c:234:13:UserInterfaceCommandDispatcher	21
+../Core/Src/UserInterface.c:276:13:UserInterfaceHandler	2
