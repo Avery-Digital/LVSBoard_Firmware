@@ -17,6 +17,7 @@ Core/Src/EVSDriver.o: ../Core/Src/EVSDriver.c ../Core/Inc/EVSDriver.h \
  ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_rcc.h \
  ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_spi.h \
  ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_usart.h \
+ ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_cortex.h \
  ../Core/Inc/PinMapper.h ../Core/Inc/SPIDriver.h \
  ../Core/Inc/StatusManager.h ../Core/Inc/GPIODriver.h
 ../Core/Inc/EVSDriver.h:
@@ -39,6 +40,7 @@ Core/Src/EVSDriver.o: ../Core/Src/EVSDriver.c ../Core/Inc/EVSDriver.h \
 ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_rcc.h:
 ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_spi.h:
 ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_usart.h:
+../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_cortex.h:
 ../Core/Inc/PinMapper.h:
 ../Core/Inc/SPIDriver.h:
 ../Core/Inc/StatusManager.h:

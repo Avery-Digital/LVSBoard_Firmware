@@ -19,6 +19,9 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32h7xx_it.h"
+#include "stm32h7xx_ll_dma.h"
+#include "stm32h7xx_ll_usart.h"
+#include "CommDriver.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* Private typedef -----------------------------------------------------------*/
@@ -156,8 +159,69 @@ void SysTick_Handler(void)
 
 /******************************************************************************/
 /* STM32H7xx Peripheral Interrupt Handlers                                    */
-/* Add here the Interrupt Handlers for the used peripherals.                  */
-/* For the available peripheral interrupt handler names,                      */
-/* please refer to the startup file (startup_stm32h7xx.s).                    */
 /******************************************************************************/
+
+/**
+  * @brief DMA1 Stream0 — USART3 RX (HT/TC interrupts)
+  */
+void DMA1_Stream0_IRQHandler(void)
+{
+    /* Half-transfer */
+    if (LL_DMA_IsActiveFlag_HT0(DMA1)) {
+        LL_DMA_ClearFlag_HT0(DMA1);
+        CommDriver_RxProcessISR();
+    }
+
+    /* Transfer-complete */
+    if (LL_DMA_IsActiveFlag_TC0(DMA1)) {
+        LL_DMA_ClearFlag_TC0(DMA1);
+        CommDriver_RxProcessISR();
+    }
+
+    /* Transfer error */
+    if (LL_DMA_IsActiveFlag_TE0(DMA1)) {
+        LL_DMA_ClearFlag_TE0(DMA1);
+    }
+}
+
+/**
+  * @brief DMA2 Stream0 — USART3 TX (TC interrupt)
+  */
+void DMA2_Stream0_IRQHandler(void)
+{
+    /* Transfer-complete */
+    if (LL_DMA_IsActiveFlag_TC0(DMA2)) {
+        LL_DMA_ClearFlag_TC0(DMA2);
+        CommDriver_TxCompleteISR();
+    }
+
+    /* Transfer error */
+    if (LL_DMA_IsActiveFlag_TE0(DMA2)) {
+        LL_DMA_ClearFlag_TE0(DMA2);
+    }
+}
+
+/**
+  * @brief USART3 — IDLE line detection + error flag clearing
+  */
+void USART3_IRQHandler(void)
+{
+    /* IDLE line detected — end of packet gap */
+    if (LL_USART_IsActiveFlag_IDLE(USART3)) {
+        LL_USART_ClearFlag_IDLE(USART3);
+        CommDriver_RxProcessISR();
+    }
+
+    /* Clear error flags to prevent interrupt storms */
+    if (LL_USART_IsActiveFlag_ORE(USART3)) {
+        LL_USART_ClearFlag_ORE(USART3);
+    }
+    if (LL_USART_IsActiveFlag_FE(USART3)) {
+        LL_USART_ClearFlag_FE(USART3);
+    }
+    if (LL_USART_IsActiveFlag_NE(USART3)) {
+        LL_USART_ClearFlag_NE(USART3);
+    }
+}
+
 

@@ -20,6 +20,7 @@
 #include "stm32h7xx_ll_rcc.h"
 #include "stm32h7xx_ll_spi.h"
 #include "stm32h7xx_ll_usart.h"
+#include "stm32h7xx_ll_cortex.h"
 
 /* Function ------------------------------------------------------------------*/
 #define	Delay(Cycles)	for (uint32_t Counts=0; Counts<Cycles; Counts++) __NOP()
@@ -178,6 +179,10 @@ extern	GPIOHandler 		LED_Status_VSB1;
 #define	EVSADG729CH1Addr	0x45
 #define	EVSADG729CH2Addr	0x47
 extern	EVSHandler			VS_ADG714;
+
+/* FT231 Timing Constants ----------------------------------------------------*/
+#define FT231_RSTDelay	SYSCLK/1000000
+#define FT231_PONDelay	SYSCLK/20
 
 /* USB Configuration ---------------------------------------------------------*/
 extern USBHandler 			USB_FT231;

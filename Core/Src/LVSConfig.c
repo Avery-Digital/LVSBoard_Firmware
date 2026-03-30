@@ -176,23 +176,19 @@ EVSHandler		VS_ADG714			= {
 
 /* USB Configuration ---------------------------------------------------------*/
 UARTHandler USB_FT231_UART = {
-	.UART_CMPLX_Port				= TRUE,
+	.UART_CMPLX_Port				= FALSE,
 	.UART_GPIO0_Clk					= LL_AHB4_GRP1_PERIPH_GPIOD,
 	.UART_GPIO0_Port				= GPIOD,
 	.UART_GPIO0_Pin					= LL_GPIO_PIN_8|LL_GPIO_PIN_9,
 	.UART_GPIO0_AF					= LL_GPIO_AF_7,
-	.UART_GPIO1_Clk					= LL_AHB4_GRP1_PERIPH_GPIOB,
-	.UART_GPIO1_Port				= GPIOB,
-	.UART_GPIO1_Pin					= LL_GPIO_PIN_13|LL_GPIO_PIN_14,
-	.UART_GPIO1_AF					= LL_GPIO_AF_7,
 	.UART_Bus						= APB1,
 	.UART_Clk						= LL_APB1_GRP1_PERIPH_USART3,
 	.UART_Clk_Source				= LL_RCC_USART234578_CLKSOURCE_PLL3Q,
 	.UART_Clk_PrescalerValue		= LL_USART_PRESCALER_DIV1,
 	.UART_Peripheral				= USART3,
-	.UART_Baudrate					= 921600,
+	.UART_Baudrate					= 115200,
 	.UART_TransferDirection			= LL_USART_DIRECTION_TX_RX,
-	.UART_FlowControl				= LL_USART_HWCONTROL_RTS_CTS,
+	.UART_FlowControl				= LL_USART_HWCONTROL_NONE,
 	.UART_IRQn						= USART3_IRQn,
 	.UART_IRQ_Priority				= 2,
 }; /* USB_FT231_UART */

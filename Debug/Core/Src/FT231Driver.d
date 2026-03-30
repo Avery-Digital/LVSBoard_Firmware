@@ -17,6 +17,7 @@ Core/Src/FT231Driver.o: ../Core/Src/FT231Driver.c \
  ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_rcc.h \
  ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_spi.h \
  ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_usart.h \
+ ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_cortex.h \
  ../Core/Inc/UARTDriver.h
 ../Core/Inc/FT231Driver.h:
 ../Core/Inc/GPIODriver.h:
@@ -37,4 +38,5 @@ Core/Src/FT231Driver.o: ../Core/Src/FT231Driver.c \
 ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_rcc.h:
 ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_spi.h:
 ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_usart.h:
+../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_cortex.h:
 ../Core/Inc/UARTDriver.h:

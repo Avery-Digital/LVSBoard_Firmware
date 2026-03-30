@@ -16,7 +16,8 @@ Core/Src/StatusManager.o: ../Core/Src/StatusManager.c \
  ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_i2c.h \
  ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_rcc.h \
  ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_spi.h \
- ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_usart.h
+ ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_usart.h \
+ ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_cortex.h
 ../Core/Inc/StatusManager.h:
 ../Core/Inc/GPIODriver.h:
 ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_bus.h:
@@ -36,3 +37,4 @@ Core/Src/StatusManager.o: ../Core/Src/StatusManager.c \
 ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_rcc.h:
 ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_spi.h:
 ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_usart.h:
+../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_cortex.h:

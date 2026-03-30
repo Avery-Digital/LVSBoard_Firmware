@@ -61,14 +61,22 @@ int main(void)
 
 	while (1)
 	{
-		/* Check the reception buffer */
-		FT231ReadDMABuffer();
-
-		/* Call for user interface */
-		UserInterfaceHandler();
-
-		/* Call for MODBUS interface */
-		MODBUSInterfaceHandler();
+		/* Check for pending TX response from command handler */
+		if (cmd_tx_request.pending)
+		{
+			if (CommDriver_TxReady())
+			{
+				CommDriver_SendPacket(
+					cmd_tx_request.msg1,
+					cmd_tx_request.msg2,
+					cmd_tx_request.cmd1,
+					cmd_tx_request.cmd2,
+					cmd_tx_request.payload,
+					cmd_tx_request.length
+				);
+				cmd_tx_request.pending = false;
+			}
+		}
 	}
 }
 
@@ -246,8 +254,10 @@ ErrorStatus BoardInit( void)
 	/* Visual & Terminal communication initialization */
 	Status += StatusManager_Init();
 
-	/* FT231 initialization */
-	Status += FT231Init();
+	/* Communication driver initialization (USART3 + DMA + FT231 reset) */
+	CommDriver_Init();
+	CommandInterface_Init();
+	CommDriver_StartRx();
 
 	/* Low Voltage Switcher initialization */
 	Status += EVSInit( &VS_ADG714);
@@ -262,16 +272,8 @@ ErrorStatus BoardReset( void)
 	/* Reset Status Manager */
 	Status += StatusManager_Reset();
 
-	/* Reset FT231 */
-	Status += FT231Reset();
-
 	/* Reset Voltage Switcher */
 	Status += EVSReset( &VS_ADG714);
-
-	/* Reset User Interface */
-	Status += ResetUserInterface();
-
-	/* Reset MODBUS Interface */
 
  	return Status;
 }

@@ -14,7 +14,7 @@
 static volatile uint16_t RX_Tail = 0;
 #define RING_SZ		32768u  // 32 KB (<= 65535 NDTR limit)
 #define RING_MASK	(RING_SZ - 1)
-__attribute__((section(".RAM_D2"), aligned(32), used)) static uint8_t RxRing[RING_SZ];
+static uint8_t RxRing[RING_SZ];
 
 /* Public functions ----------------------------------------------------------*/
 ErrorStatus UARTInit( UARTHandler *UART_Handler)

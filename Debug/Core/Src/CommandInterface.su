@@ -1,0 +1,14 @@
+../Core/Src/CommandInterface.c:46:13:SendResponse	24	static
+../Core/Src/CommandInterface.c:65:13:SendError	32	static
+../Core/Src/CommandInterface.c:76:13:Command_HandleVS_AllSameSource	40	static
+../Core/Src/CommandInterface.c:92:13:Command_HandleVS_SetSingle	32	static
+../Core/Src/CommandInterface.c:108:13:Command_HandleVS_GetSingle	32	static
+../Core/Src/CommandInterface.c:129:13:Command_HandleVS_SetAll	32	static
+../Core/Src/CommandInterface.c:143:13:Command_HandleVS_GetAll	32	static
+../Core/Src/CommandInterface.c:167:13:Command_HandleBoardID	24	static
+../Core/Src/CommandInterface.c:173:13:Command_HandleFWRevision	24	static
+../Core/Src/CommandInterface.c:179:13:Command_HandleBISTStatus	24	static
+../Core/Src/CommandInterface.c:194:13:Command_HandlePing	24	static
+../Core/Src/CommandInterface.c:210:6:Command_Dispatch	24	static
+../Core/Src/CommandInterface.c:270:13:OnPacketReceived	24	static
+../Core/Src/CommandInterface.c:282:6:CommandInterface_Init	16	static

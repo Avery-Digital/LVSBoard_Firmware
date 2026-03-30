@@ -26,10 +26,9 @@ extern "C" {
 #include "stm32h7xx_ll_pwr.h"
 #include "LVSConfig.h"
 #include "EVSDriver.h"
-#include "FT231Driver.h"
 #include "StatusManager.h"
-#include "UserInterface.h"
-#include "MODBUSInterface.h"
+#include "CommDriver.h"
+#include "CommandInterface.h"
 
 
 #if defined(USE_FULL_ASSERT)

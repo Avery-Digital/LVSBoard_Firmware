@@ -1,0 +1,6 @@
+../Core/Src/PacketProtocol.c:20:13:AppendEscaped	24	static
+../Core/Src/PacketProtocol.c:30:13:DecodeHeader	16	static
+../Core/Src/PacketProtocol.c:43:6:Protocol_ParserInit	24	static
+../Core/Src/PacketProtocol.c:58:6:Protocol_ParserReset	16	static
+../Core/Src/PacketProtocol.c:71:6:Protocol_FeedBytes	48	static
+../Core/Src/PacketProtocol.c:190:10:Protocol_BuildPacket	24	static

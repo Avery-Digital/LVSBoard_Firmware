@@ -27,8 +27,8 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Core/Inc/EVSDriver.h ../Core/Inc/ADG729Driver.h \
  ../Core/Inc/I2CDriver.h ../Core/Inc/PinMapper.h ../Core/Inc/SPIDriver.h \
  ../Core/Inc/StatusManager.h ../Core/Inc/GPIODriver.h \
- ../Core/Inc/FT231Driver.h ../Core/Inc/UARTDriver.h \
- ../Core/Inc/UserInterface.h ../Core/Inc/MODBUSInterface.h
+ ../Core/Inc/CommDriver.h ../Core/Inc/PacketProtocol.h \
+ ../Core/Inc/crc16.h ../Core/Inc/CommandInterface.h
 ../Core/Inc/main.h:
 ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_rcc.h:
 ../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h:
@@ -62,7 +62,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Core/Inc/SPIDriver.h:
 ../Core/Inc/StatusManager.h:
 ../Core/Inc/GPIODriver.h:
-../Core/Inc/FT231Driver.h:
-../Core/Inc/UARTDriver.h:
-../Core/Inc/UserInterface.h:
-../Core/Inc/MODBUSInterface.h:
+../Core/Inc/CommDriver.h:
+../Core/Inc/PacketProtocol.h:
+../Core/Inc/crc16.h:
+../Core/Inc/CommandInterface.h:

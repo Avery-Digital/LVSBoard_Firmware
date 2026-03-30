@@ -16,6 +16,7 @@ Core/Src/SPIDriver.o: ../Core/Src/SPIDriver.c ../Core/Inc/SPIDriver.h \
  ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_i2c.h \
  ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_rcc.h \
  ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_usart.h \
+ ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_cortex.h \
  ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_utils.h \
  ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_system.h \
  ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_bus.h
@@ -37,6 +38,7 @@ Core/Src/SPIDriver.o: ../Core/Src/SPIDriver.c ../Core/Inc/SPIDriver.h \
 ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_i2c.h:
 ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_rcc.h:
 ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_usart.h:
+../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_cortex.h:
 ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_utils.h:
 ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_system.h:
 ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_bus.h:

@@ -16,7 +16,8 @@ Core/Src/ADG729Driver.o: ../Core/Src/ADG729Driver.c \
  ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_dmamux.h \
  ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_rcc.h \
  ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_spi.h \
- ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_usart.h
+ ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_usart.h \
+ ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_cortex.h
 ../Core/Inc/ADG729Driver.h:
 ../Core/Inc/I2CDriver.h:
 ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_bus.h:
@@ -36,3 +37,4 @@ Core/Src/ADG729Driver.o: ../Core/Src/ADG729Driver.c \
 ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_rcc.h:
 ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_spi.h:
 ../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_usart.h:
+../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_cortex.h:
