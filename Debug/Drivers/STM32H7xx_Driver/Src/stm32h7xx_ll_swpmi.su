@@ -1,8 +1,0 @@
-../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_swpmi.h:390:26:LL_SWPMI_IsActivated	16	static
-../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_swpmi.h:426:22:LL_SWPMI_SetBitRatePrescaler	16	static
-../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_swpmi.h:451:22:LL_SWPMI_SetVoltageClass	16	static
-../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_bus.h:2350:22:LL_APB1_GRP2_ForceReset	16	static
-../Drivers/STM32H7xx_Driver/Inc/stm32h7xx_ll_bus.h:2374:22:LL_APB1_GRP2_ReleaseReset	16	static
-../Drivers/STM32H7xx_Driver/Src/stm32h7xx_ll_swpmi.c:79:13:LL_SWPMI_DeInit	24	static
-../Drivers/STM32H7xx_Driver/Src/stm32h7xx_ll_swpmi.c:111:13:LL_SWPMI_Init	24	static
-../Drivers/STM32H7xx_Driver/Src/stm32h7xx_ll_swpmi.c:151:6:LL_SWPMI_StructInit	16	static

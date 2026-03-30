@@ -1,8 +1,0 @@
-../Core/Src/ADG729Driver.c:15:13:ADG729Init	1
-../Core/Src/ADG729Driver.c:25:13:ADG729WritePort	2
-../Core/Src/ADG729Driver.c:49:13:ADG729ReadPort	1
-../Core/Src/ADG729Driver.c:66:13:ADG729SetPin	1
-../Core/Src/ADG729Driver.c:86:13:ADG729ResetPin	1
-../Core/Src/ADG729Driver.c:106:13:ADG729SetAllPins	1
-../Core/Src/ADG729Driver.c:120:13:ADG729ResetAllPins	1
-../Core/Src/ADG729Driver.c:134:13:ADG729Check	1

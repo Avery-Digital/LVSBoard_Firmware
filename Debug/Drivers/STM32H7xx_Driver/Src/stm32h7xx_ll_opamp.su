@@ -1,3 +1,0 @@
-../Drivers/STM32H7xx_Driver/Src/stm32h7xx_ll_opamp.c:110:13:LL_OPAMP_DeInit	24	static
-../Drivers/STM32H7xx_Driver/Src/stm32h7xx_ll_opamp.c:134:13:LL_OPAMP_Init	24	static
-../Drivers/STM32H7xx_Driver/Src/stm32h7xx_ll_opamp.c:198:6:LL_OPAMP_StructInit	16	static

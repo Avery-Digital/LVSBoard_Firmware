@@ -1,4 +1,0 @@
-../Core/Src/StatusManager.c:14:13:StatusManager_Init	16	static
-../Core/Src/StatusManager.c:23:13:StatusManager_Reset	16	static
-../Core/Src/StatusManager.c:32:13:StatusManager_VSB0_Led	24	static
-../Core/Src/StatusManager.c:43:13:StatusManager_VSB1_Led	24	static
