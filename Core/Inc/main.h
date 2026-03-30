@@ -29,6 +29,7 @@ extern "C" {
 #include "StatusManager.h"
 #include "CommDriver.h"
 #include "CommandInterface.h"
+#include "PatternTable.h"
 
 
 #if defined(USE_FULL_ASSERT)

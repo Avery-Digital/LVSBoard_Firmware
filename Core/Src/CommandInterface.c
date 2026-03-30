@@ -20,6 +20,7 @@
 #include "CommDriver.h"
 #include "EVSDriver.h"
 #include "LVSConfig.h"
+#include "PatternTable.h"
 #include <string.h>
 
 /* ==========================================================================
@@ -164,6 +165,12 @@ static void Command_HandleVS_GetAll(const PacketHeader *header,
  *  SYSTEM COMMAND HANDLERS
  * ========================================================================== */
 
+static void Command_HandleGetFWVersion(const PacketHeader *header)
+{
+    static const uint8_t ver[] = "LVSBoard v1.0.0";
+    SendResponse(header, header->cmd1, header->cmd2, ver, sizeof(ver) - 1);
+}
+
 static void Command_HandleBoardID(const PacketHeader *header)
 {
     static const uint8_t id[] = { 'L', 'V', 'S' };
@@ -185,6 +192,71 @@ static void Command_HandleBISTStatus(const PacketHeader *header)
         static const uint8_t fail[] = { 'F', 'A', 'I', 'L' };
         SendResponse(header, header->cmd1, header->cmd2, fail, 4);
     }
+}
+
+/* ==========================================================================
+ *  SEQUENCE / PATTERN COMMAND HANDLERS
+ * ========================================================================== */
+
+static void Command_HandleSeqUploadPattern(const PacketHeader *header,
+                                            const uint8_t *payload)
+{
+    /* Expect 2 bytes slot + 300 bytes pin states = 302 */
+    if (header->length != (2 + PATTERN_PIN_COUNT)) {
+        SendError(header, 0xF0, 0x05);
+        return;
+    }
+
+    uint16_t slot = ((uint16_t)payload[0] << 8) | payload[1];
+
+    if (!PatternTable_WriteSlot(slot, &payload[2])) {
+        SendError(header, 0xFF, 0x01);
+        return;
+    }
+
+    uint8_t resp = 0x00;
+    SendResponse(header, header->cmd1, header->cmd2, &resp, 1);
+}
+
+static void Command_HandleSeqRun(const PacketHeader *header,
+                                  const uint8_t *payload)
+{
+    /* Payload must be a multiple of 4 bytes and non-empty */
+    if (header->length == 0 || (header->length % 4) != 0) {
+        SendError(header, 0xF0, 0x05);
+        return;
+    }
+
+    uint16_t num_steps = header->length / 4;
+
+    if (!Sequence_Start(payload, num_steps)) {
+        SendError(header, 0xFF, 0x01);
+        return;
+    }
+
+    uint8_t resp = 0x00;
+    SendResponse(header, header->cmd1, header->cmd2, &resp, 1);
+}
+
+static void Command_HandleSeqStop(const PacketHeader *header)
+{
+    Sequence_Stop();
+    uint8_t resp = 0x00;
+    SendResponse(header, header->cmd1, header->cmd2, &resp, 1);
+}
+
+static void Command_HandleSeqStatus(const PacketHeader *header)
+{
+    uint8_t  state = (uint8_t)Sequence_GetState();
+    uint16_t step  = Sequence_GetCurrentStep();
+    uint16_t total = Sequence_GetTotalSteps();
+
+    uint8_t resp[5] = {
+        state,
+        (uint8_t)(step >> 8),  (uint8_t)(step & 0xFF),
+        (uint8_t)(total >> 8), (uint8_t)(total & 0xFF)
+    };
+    SendResponse(header, header->cmd1, header->cmd2, resp, 5);
 }
 
 /* ==========================================================================
@@ -218,10 +290,10 @@ void Command_Dispatch(const PacketHeader *header,
     case CMD_VS_ALL_FLOAT:
         Command_HandleVS_AllSameSource(header, payload, 0);
         break;
-    case CMD_VS_ALL_VIN1:
+    case CMD_VS_ALL_VIN0:
         Command_HandleVS_AllSameSource(header, payload, 1);
         break;
-    case CMD_VS_ALL_VIN2:
+    case CMD_VS_ALL_VIN1:
         Command_HandleVS_AllSameSource(header, payload, 2);
         break;
     case CMD_VS_SET_SINGLE:
@@ -235,6 +307,25 @@ void Command_Dispatch(const PacketHeader *header,
         break;
     case CMD_VS_GET_ALL:
         Command_HandleVS_GetAll(header, payload);
+        break;
+
+    /* ---- Sequence / Pattern Commands (0x0E10–0x0E13) ---- */
+    case CMD_SEQ_UPLOAD_PATTERN:
+        Command_HandleSeqUploadPattern(header, payload);
+        break;
+    case CMD_SEQ_RUN:
+        Command_HandleSeqRun(header, payload);
+        break;
+    case CMD_SEQ_STOP:
+        Command_HandleSeqStop(header);
+        break;
+    case CMD_SEQ_STATUS:
+        Command_HandleSeqStatus(header);
+        break;
+
+    /* ---- Firmware Info ---- */
+    case CMD_GET_FW_VERSION:
+        Command_HandleGetFWVersion(header);
         break;
 
     /* ---- System Commands ---- */

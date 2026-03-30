@@ -28,10 +28,10 @@
 /* Voltage Switcher */
 #define AllPinsFloat 				300
 #define AllPinsFloatString			"300"
-#define AllPinsToVIn1 				301
-#define AllPinsToVIn1String			"301"
-#define AllPinsToVIn2 				302
-#define AllPinsToVIn2String			"302"
+#define AllPinsToVIN0 				301
+#define AllPinsToVIN0String			"301"
+#define AllPinsToVIN1 				302
+#define AllPinsToVIN1String			"302"
 
 #define SetSinglePin				310
 #define SetSinglePinString			"310"
@@ -80,8 +80,8 @@
 #define	HelpMessage					(\
 									"List of available options:\r\n"\
 									"300: Float All the pins\r\n"\
-									"301: Connect All the pins to VIn1\r\n"\
-									"302: Connect All the pins to VIn2\r\n"\
+									"301: Connect All the pins to VIN0\r\n"\
+									"302: Connect All the pins to VIN1\r\n"\
 									"310: Set single pin configuration\r\n"\
 									"311: Get single pin configuration\r\n"\
 									"320: Set all pins configuration\r\n"\
@@ -99,17 +99,17 @@
 #define FailedMessage				"Unsupported command..."
 
 #define AllPinsFloatedMessage		"All pins are floated."
-#define AllPinstoVIn1Message		"All pins are connected to VIn1."
-#define AllPinstoVIn2Message		"All pins are connected to VIn2."
+#define AllPinstoVIN0Message		"All pins are connected to VIN0."
+#define AllPinstoVIN1Message		"All pins are connected to VIN1."
 #define EnterSinglePinMessage		"Enter pin number: (0~299)"
-#define EnterSinglePinSourceMessage	"Enter pin %hu source: ( 0)Float  1)VIn1  2)VIn2 )"
+#define EnterSinglePinSourceMessage	"Enter pin %hu source: ( 0)Float  1)VIN0  2)VIN1 )"
 #define	PinFloatedMessage			"Pin %hu is floated."
-#define	PinSourceMessage			"Pin %hu is connected to VIn%d."
+#define	PinSourceMessage			"Pin %hu is connected to VIN%d."
 #define EnterPinsSourcesMessage		"Enter sources of all pins sequentially: (300 data point expected)"
 #define AckPinsSourcesMessage		"Sources for all pins applied."
 #define PinsSourcesMessage			"Sources of all pins sequentially: (10 blocks, 30 pins)"
-#define EnterSourceMessage			"Enter target source: ( 0)Float  1)VIn1  2)VIn2 )"
-#define SourceConnectionMessage		"VIn%d is connected to %lu pin(s)."
+#define EnterSourceMessage			"Enter target source: ( 0)Float  1)VIN0  2)VIN1 )"
+#define SourceConnectionMessage		"VIN%d is connected to %lu pin(s)."
 
 
 /* Public function prototypes ------------------------------------------------*/

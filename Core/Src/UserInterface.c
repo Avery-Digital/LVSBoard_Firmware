@@ -76,14 +76,14 @@ ErrorStatus VoltageSwitcherInterface( void)
 		FT231Answer( AllPinsFloatedMessage);
 		ResetUserInterface();
 		break;
-	case AllPinsToVIn1:
+	case AllPinsToVIN0:
 		EVSSetAllPinsSameSource( &VS_ADG714, 1);
-		FT231Answer( AllPinstoVIn1Message);
+		FT231Answer( AllPinstoVIN0Message);
 		ResetUserInterface();
 		break;
-	case AllPinsToVIn2:
+	case AllPinsToVIN1:
 		EVSSetAllPinsSameSource( &VS_ADG714, 2);
-		FT231Answer( AllPinstoVIn2Message);
+		FT231Answer( AllPinstoVIN1Message);
 		ResetUserInterface();
 		break;
 	/* Individual switch configuration */
@@ -117,7 +117,7 @@ ErrorStatus VoltageSwitcherInterface( void)
 					if (!Source)
 						sprintf( UserBuffer, PinFloatedMessage, SocketPin);
 					else
-						sprintf( UserBuffer, PinSourceMessage, SocketPin, Source);
+						sprintf( UserBuffer, PinSourceMessage, SocketPin, Source - 1);
 					FT231Answer( UserBuffer);
 				}
 				else
@@ -147,7 +147,7 @@ ErrorStatus VoltageSwitcherInterface( void)
 				if (!Source)
 					sprintf( UserBuffer, PinFloatedMessage, SocketPin);
 				else
-					sprintf( UserBuffer, PinSourceMessage, SocketPin, Source);
+					sprintf( UserBuffer, PinSourceMessage, SocketPin, Source - 1);
 				FT231Answer( UserBuffer);
 			}
 			else
@@ -210,7 +210,7 @@ ErrorStatus VoltageSwitcherInterface( void)
 		case 2:
 			SourceData[0] = atoi(Message);
 			if (EVSReportSourceConnection( &VS_ADG714, SourceData[0], &i) == SUCCESS)
-				sprintf( UserBuffer, SourceConnectionMessage, SourceData[0], i);
+				sprintf( UserBuffer, SourceConnectionMessage, SourceData[0] - 1, i);
 			else
 				sprintf( UserBuffer,  "Bug found @ VoltageSwitcherInterface->ReportSourceConn->EVSReportSourceConnection!");
 			FT231Answer( UserBuffer);
@@ -241,8 +241,8 @@ ErrorStatus UserInterfaceCommandDispatcher( void)
 		else if (! strcmp( Message, BISTProcessString))			Command = BISTProcess;
 		/* Voltage Switcher Management ---------------------------------------*/
 		else if (! strcmp( Message, AllPinsFloatString))		Command = AllPinsFloat;
-		else if (! strcmp( Message, AllPinsToVIn1String))		Command = AllPinsToVIn1;
-		else if (! strcmp( Message, AllPinsToVIn2String))		Command = AllPinsToVIn2;
+		else if (! strcmp( Message, AllPinsToVIN0String))		Command = AllPinsToVIN0;
+		else if (! strcmp( Message, AllPinsToVIN1String))		Command = AllPinsToVIN1;
 		else if (! strcmp( Message, SetSinglePinString))		Command = SetSinglePin;
 		else if (! strcmp( Message, GetSinglePinString))		Command = GetSinglePin;
 		else if (! strcmp( Message, SetAllPinsString))			Command = SetAllPins;
@@ -255,8 +255,8 @@ ErrorStatus UserInterfaceCommandDispatcher( void)
 	switch (Command)
 	{
 	case AllPinsFloat		:
-	case AllPinsToVIn1		:
-	case AllPinsToVIn2		:
+	case AllPinsToVIN0		:
+	case AllPinsToVIN1		:
 	case SetSinglePin		:
 	case GetSinglePin		:
 	case SetAllPins			:

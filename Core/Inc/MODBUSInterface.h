@@ -23,8 +23,8 @@
 
 /* Voltage Switcher */
 #define AllSwitchesFloatMBF			0x0300
-#define AllSwitchesToVIn1MBF		0x0301
-#define AllSwitchesToVIn2MBF		0x0302
+#define AllSwitchesToVIN0MBF		0x0301
+#define AllSwitchesToVIN1MBF		0x0302
 
 #define SetSingleSwitchMBF			0x0310
 #define GetSingleSwitchMBF			0x0311

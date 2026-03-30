@@ -83,6 +83,46 @@ ErrorStatus EVSEnAllnCS( I2CHandler *I2C_Handler)
 	return Status;
 }
 
+/**
+ * @brief  Write a block without read-back verification.
+ *         Used by EVSSetAllPins() for fast sequencing.
+ */
+static ErrorStatus EVSBlockWrite( I2CHandler *I2C_Handler, GPIOHandler *nCS_Handler, SPIHandler *SPI_Handler, uint8_t BlockNumber, uint32_t DataWrite)
+{
+	ErrorStatus Status = SUCCESS;
+	uint8_t 	I2CAddress, I2CPort;
+	uint32_t	Word0Write, Word1Write;
+	uint32_t	Word0Read, 	Word1Read;
+
+	switch (BlockNumber)
+	{
+		case 0 ... 3:	I2CAddress = EVSADG729CH0Addr;	break;
+		case 4 ... 7:	I2CAddress = EVSADG729CH1Addr;	break;
+		case 8 ... 9:	I2CAddress = EVSADG729CH2Addr;	break;
+		default:		Status += ERROR;				break;
+	}
+
+	if (Status == SUCCESS)
+	{
+		Word0Write = (uint16_t) (DataWrite >> 16);
+		Word1Write = (uint16_t) (DataWrite);
+
+		Status += EVSDisAllnCS( I2C_Handler);
+
+		I2CPort = (uint8_t)(0x11 << (BlockNumber % 4));
+		Status += ADG729WritePort( I2C_Handler, I2CAddress, I2CPort);
+
+		Status += GPIOReset (nCS_Handler);
+		Status += SPIDataTransceive (SPI_Handler, &Word0Read, Word0Write);
+		Status += SPIDataTransceive (SPI_Handler, &Word1Read, Word1Write);
+		Status += GPIOSet (nCS_Handler);
+
+		Status += EVSEnAllnCS ( I2C_Handler);
+	}
+
+	return Status;
+}
+
 ErrorStatus EVSBlockProgram( I2CHandler *I2C_Handler, GPIOHandler *nCS_Handler, SPIHandler *SPI_Handler,  uint8_t BlockNumber, uint32_t *DataRead, uint32_t DataWrite)
 {
 	ErrorStatus Status = SUCCESS;
@@ -402,6 +442,16 @@ ErrorStatus EVSSetAllPins( EVSHandler *EVS_Handler, uint8_t *SourceData)
 	uint16_t SocketPin;
 	uint8_t Block;
 
+	/* Snapshot previous block data before updating buffers */
+	uint32_t PrevB0[COLS_PER_BANK];
+	uint32_t PrevB1[COLS_PER_BANK];
+	for ( Block=0; Block<COLS_PER_BANK; Block++)
+	{
+		PrevB0[Block] = EVSB0Data[Block];
+		PrevB1[Block] = EVSB1Data[Block];
+	}
+
+	/* Update software buffers with new source data */
 	for ( SocketPin=0; SocketPin<TOTAL_SOCKET_PINS; SocketPin++)
 		Status += EVSSetSinglePinInBuffer ( EVS_Handler, SocketPin, SourceData[SocketPin]);
 
@@ -409,15 +459,13 @@ ErrorStatus EVSSetAllPins( EVSHandler *EVS_Handler, uint8_t *SourceData)
 	{
 		for ( Block=0; Block<COLS_PER_BANK; Block++)
 		{
-			Status += EVSBlockProgram ( EVS_Handler->B0I2C_Interface, EVS_Handler->B0nCS_Pin, EVS_Handler->B0SPI_Interface, Block, &Temp, EVSB0Data [Block]);
-			Status += EVSBlockProgram ( EVS_Handler->B0I2C_Interface, EVS_Handler->B0nCS_Pin, EVS_Handler->B0SPI_Interface, Block, &Temp, EVSB0Data [Block]);
-			if (EVSB0Data [Block] != Temp)
-				Status += ERROR;
+			/* Only program Bank 0 block if data changed */
+			if (EVSB0Data[Block] != PrevB0[Block])
+				Status += EVSBlockWrite ( EVS_Handler->B0I2C_Interface, EVS_Handler->B0nCS_Pin, EVS_Handler->B0SPI_Interface, Block, EVSB0Data [Block]);
 
-			Status += EVSBlockProgram ( EVS_Handler->B1I2C_Interface, EVS_Handler->B1nCS_Pin, EVS_Handler->B1SPI_Interface, Block, &Temp, EVSB1Data [Block]);
-			Status += EVSBlockProgram ( EVS_Handler->B1I2C_Interface, EVS_Handler->B1nCS_Pin, EVS_Handler->B1SPI_Interface, Block, &Temp, EVSB1Data [Block]);
-			if (EVSB1Data [Block] != Temp)
-				Status += ERROR;
+			/* Only program Bank 1 block if data changed */
+			if (EVSB1Data[Block] != PrevB1[Block])
+				Status += EVSBlockWrite ( EVS_Handler->B1I2C_Interface, EVS_Handler->B1nCS_Pin, EVS_Handler->B1SPI_Interface, Block, EVSB1Data [Block]);
 		}
 	}
 

@@ -275,7 +275,7 @@ ErrorStatus MBVoltageSwitcher( uint16_t CommandFunc)
 		else
 			MODBUSInterfaceErrorReport( FunArgSizeErrorMBF);
 		break;
-	case AllSwitchesToVIn1MBF:
+	case AllSwitchesToVIN0MBF:
 		if (MBDataLength == 0)
 		{
 			Status += EVSSetAllPinsSameSource( &VS_ADG714, 1);
@@ -291,7 +291,7 @@ ErrorStatus MBVoltageSwitcher( uint16_t CommandFunc)
 		else
 			MODBUSInterfaceErrorReport( FunArgSizeErrorMBF);
 		break;
-	case AllSwitchesToVIn2MBF:
+	case AllSwitchesToVIN1MBF:
 		if (MBDataLength == 0)
 		{
 			Status += EVSSetAllPinsSameSource( &VS_ADG714, 2);
@@ -396,8 +396,8 @@ ErrorStatus MODBUSInterCommandDispatcher( void)
 	switch (CommandFunc)
 	{
 	case AllSwitchesFloatMBF	:
-	case AllSwitchesToVIn1MBF	:
-	case AllSwitchesToVIn2MBF	:
+	case AllSwitchesToVIN0MBF	:
+	case AllSwitchesToVIN1MBF	:
 	case SetSingleSwitchMBF		:
 	case GetSingleSwitchMBF		:
 	case SetAllSwitchesMBF		:

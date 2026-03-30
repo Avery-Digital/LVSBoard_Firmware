@@ -77,6 +77,9 @@ int main(void)
 				cmd_tx_request.pending = false;
 			}
 		}
+
+		/* Run sequence state machine */
+		Sequence_Poll();
 	}
 }
 
@@ -261,6 +264,9 @@ ErrorStatus BoardInit( void)
 
 	/* Low Voltage Switcher initialization */
 	Status += EVSInit( &VS_ADG714);
+
+	/* Pattern table initialization (all slots zeroed) */
+	PatternTable_Init();
 
  	return Status;
 }

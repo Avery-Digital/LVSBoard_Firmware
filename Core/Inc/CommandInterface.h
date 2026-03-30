@@ -32,8 +32,8 @@ extern "C" {
 
 /* Voltage Switcher Commands (0x0E01–0x0E07) */
 #define CMD_VS_ALL_FLOAT    CMD_CODE(0x0E, 0x01)    /**< Float all switches      */
-#define CMD_VS_ALL_VIN1     CMD_CODE(0x0E, 0x02)    /**< Connect all to VIn1     */
-#define CMD_VS_ALL_VIN2     CMD_CODE(0x0E, 0x03)    /**< Connect all to VIn2     */
+#define CMD_VS_ALL_VIN0     CMD_CODE(0x0E, 0x02)    /**< Connect all to VIN0     */
+#define CMD_VS_ALL_VIN1     CMD_CODE(0x0E, 0x03)    /**< Connect all to VIN1     */
 #define CMD_VS_SET_SINGLE   CMD_CODE(0x0E, 0x04)    /**< Set single switch       */
 #define CMD_VS_GET_SINGLE   CMD_CODE(0x0E, 0x05)    /**< Get single switch       */
 #define CMD_VS_SET_ALL      CMD_CODE(0x0E, 0x06)    /**< Set all switches        */
@@ -47,6 +47,15 @@ extern "C" {
 #define CMD_BOARD_ID        CMD_CODE(0xE0, 0x01)    /**< Get Board ID ("LVS")    */
 #define CMD_FW_REV          CMD_CODE(0xE0, 0x02)    /**< Get FW Revision ("R1")  */
 #define CMD_BIST_STATUS     CMD_CODE(0xE0, 0xFF)    /**< Get BIST result         */
+
+/* Sequence / Pattern Commands (0x0E10–0x0E13) */
+#define CMD_SEQ_UPLOAD_PATTERN CMD_CODE(0x0E, 0x10)  /**< Upload a pattern slot    */
+#define CMD_SEQ_RUN            CMD_CODE(0x0E, 0x11)  /**< Run a pattern sequence   */
+#define CMD_SEQ_STOP           CMD_CODE(0x0E, 0x12)  /**< Stop running sequence    */
+#define CMD_SEQ_STATUS         CMD_CODE(0x0E, 0x13)  /**< Query sequence state     */
+
+/* Firmware Info */
+#define CMD_GET_FW_VERSION  CMD_CODE(0x0E, 0x69)    /**< Get firmware version str */
 
 /* Utility */
 #define CMD_PING            CMD_CODE(0xDE, 0xAD)    /**< Ping / echo test        */
