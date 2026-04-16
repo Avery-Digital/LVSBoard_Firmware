@@ -4,3 +4,10 @@ Release/
 
 # IDE per-machine settings
 .settings/language.settings.xml
+.settings/*.prefs
+
+# Claude Code local settings
+.claude/
+
+# Eclipse/STM32CubeIDE launch configs (personal)
+*.launch
