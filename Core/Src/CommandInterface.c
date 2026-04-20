@@ -21,6 +21,7 @@
 #include "EVSDriver.h"
 #include "LVSConfig.h"
 #include "PatternTable.h"
+#include "endian_be.h"
 #include <string.h>
 
 /* ==========================================================================
@@ -98,7 +99,7 @@ static void Command_HandleVS_SetSingle(const PacketHeader *header,
         return;
     }
 
-    uint16_t pin = ((uint16_t)payload[0] << 8) | payload[1];
+    uint16_t pin = be16_unpack(&payload[0]);
     uint8_t  source = payload[2];
 
     ErrorStatus status = EVSSetSinglePin(&VS_ADG714, pin, source);
@@ -114,7 +115,7 @@ static void Command_HandleVS_GetSingle(const PacketHeader *header,
         return;
     }
 
-    uint16_t pin = ((uint16_t)payload[0] << 8) | payload[1];
+    uint16_t pin = be16_unpack(&payload[0]);
     uint8_t  source = 0;
 
     ErrorStatus status = EVSGetSinglePin(&VS_ADG714, pin, &source);
@@ -167,7 +168,7 @@ static void Command_HandleVS_GetAll(const PacketHeader *header,
 
 static void Command_HandleGetFWVersion(const PacketHeader *header)
 {
-    static const uint8_t ver[] = "LVSBoard v1.0.0";
+    static const uint8_t ver[] = "LVSBoard v2.0.0";
     SendResponse(header, header->cmd1, header->cmd2, ver, sizeof(ver) - 1);
 }
 
@@ -207,7 +208,7 @@ static void Command_HandleSeqUploadPattern(const PacketHeader *header,
         return;
     }
 
-    uint16_t slot = ((uint16_t)payload[0] << 8) | payload[1];
+    uint16_t slot = be16_unpack(&payload[0]);
 
     if (!PatternTable_WriteSlot(slot, &payload[2])) {
         SendError(header, 0xFF, 0x01);
@@ -251,11 +252,10 @@ static void Command_HandleSeqStatus(const PacketHeader *header)
     uint16_t step  = Sequence_GetCurrentStep();
     uint16_t total = Sequence_GetTotalSteps();
 
-    uint8_t resp[5] = {
-        state,
-        (uint8_t)(step >> 8),  (uint8_t)(step & 0xFF),
-        (uint8_t)(total >> 8), (uint8_t)(total & 0xFF)
-    };
+    uint8_t resp[5];
+    resp[0] = state;
+    be16_pack(&resp[1], step);
+    be16_pack(&resp[3], total);
     SendResponse(header, header->cmd1, header->cmd2, resp, 5);
 }
 
