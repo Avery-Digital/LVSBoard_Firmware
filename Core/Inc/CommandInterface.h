@@ -48,6 +48,16 @@ extern "C" {
 #define CMD_FW_REV          CMD_CODE(0xE0, 0x02)    /**< Get FW Revision ("R1")  */
 #define CMD_BIST_STATUS     CMD_CODE(0xE0, 0xFF)    /**< Get BIST result         */
 
+/* Board Identity (shared across DMF firmware stack — same code on every board)
+ *  Response (5 bytes): [0x00][0x00][0xFF]['L']['V']
+ *  Compare: motherboard 'M','B' / actuator 'A','B' / assembly 'A','S'
+ */
+#define CMD_GET_BOARD_TYPE  CMD_CODE(0x0B, 0x99)    /**< Board type (shared cmd) */
+
+/* Board identifier bytes — 'L' 'V' (LVS Board) */
+#define LVS_BOARD_ID_1      0x4CU   /**< 'L' */
+#define LVS_BOARD_ID_2      0x56U   /**< 'V' */
+
 /* Sequence / Pattern Commands (0x0E10–0x0E13) */
 #define CMD_SEQ_UPLOAD_PATTERN CMD_CODE(0x0E, 0x10)  /**< Upload a pattern slot    */
 #define CMD_SEQ_RUN            CMD_CODE(0x0E, 0x11)  /**< Run a pattern sequence   */

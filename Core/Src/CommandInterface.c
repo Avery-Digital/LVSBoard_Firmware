@@ -178,6 +178,28 @@ static void Command_HandleBoardID(const PacketHeader *header)
     SendResponse(header, header->cmd1, header->cmd2, id, 3);
 }
 
+/* ==========================================================================
+ *  CMD_GET_BOARD_TYPE (0x0B99)
+ *
+ *  Shared identity command across the DMF firmware stack.  Lets a host
+ *  distinguish this LVS board from a motherboard / driverboard / actuator
+ *  / assembly-station sitting on the same bus.
+ *
+ *  Response payload (5 bytes):
+ *    Byte 0 — 0x00 (status_1: category OK)
+ *    Byte 1 — 0x00 (status_2: code OK)
+ *    Byte 2 — 0xFF (boardID placeholder — LVS is standalone)
+ *    Byte 3 — 0x4C ('L')
+ *    Byte 4 — 0x56 ('V')
+ * ========================================================================== */
+static void Command_HandleGetBoardType(const PacketHeader *header)
+{
+    static const uint8_t resp[5] = {
+        0x00, 0x00, 0xFFU, LVS_BOARD_ID_1, LVS_BOARD_ID_2
+    };
+    SendResponse(header, header->cmd1, header->cmd2, resp, sizeof(resp));
+}
+
 static void Command_HandleFWRevision(const PacketHeader *header)
 {
     static const uint8_t rev[] = { 'R', '1' };
@@ -337,6 +359,11 @@ void Command_Dispatch(const PacketHeader *header,
         break;
     case CMD_BIST_STATUS:
         Command_HandleBISTStatus(header);
+        break;
+
+    /* ---- Board Identity (0x0B99) — shared across the DMF stack ---- */
+    case CMD_GET_BOARD_TYPE:
+        Command_HandleGetBoardType(header);
         break;
 
     /* ---- Utility ---- */

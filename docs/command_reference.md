@@ -175,6 +175,31 @@ Request  : A1 B2 00 00 E0 02 F0 D5
 Response : A1 B2 00 02 E0 02 52 31 82 35
 ```
 
+### `CMD_GET_BOARD_TYPE` — `0x0B99`
+Shared identity command across the DMF firmware stack — lets a host
+distinguish boards on the same bus (LVS / motherboard / driverboard /
+actuator / assembly-station). Every board uses the same command code with
+its own 2-character identifier in the last two bytes.
+
+- Request: (no payload)
+- Response (5 bytes): `[0x00][0x00][0xFF]['L']['V']`
+  - Byte 0: status category (`0x00` = OK)
+  - Byte 1: status code (`0x00` = OK)
+  - Byte 2: boardID placeholder (`0xFF` — LVS is standalone)
+  - Byte 3-4: ASCII `"LV"` = `0x4C 0x56`
+
+```
+Request  : A1 B2 00 00 0B 99 7C 4D
+Response : A1 B2 00 05 0B 99 00 00 FF 4C 56 ?? ??
+                              cat  ok  bid 'L' 'V'
+```
+
+Sibling-board IDs (for reference):
+- Motherboard → `'M' 'B'` (`0x4D 0x42`)
+- Actuator    → `'A' 'B'` (`0x41 0x42`)
+- Assembly    → `'A' 'S'` (`0x41 0x53`)
+- Driverboard → `0xCA 0xCA`
+
 ### `CMD_BIST_STATUS` — `0xE0FF`
 Boot self-test result. The result is latched at boot; this command just reports it.
 
